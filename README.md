@@ -1,1 +1,1 @@
-# learningJava
+# Learning Java in my way! :)
