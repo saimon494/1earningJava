@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 public class Ceiling {
     private int height;
     private int paintedColor;

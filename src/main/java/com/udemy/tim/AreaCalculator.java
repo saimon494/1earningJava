@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 public class AreaCalculator {
     public static double area (double radius) {
         if (radius < 0) {

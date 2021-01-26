@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 import java.util.Scanner;
 
 public class isSeq {
