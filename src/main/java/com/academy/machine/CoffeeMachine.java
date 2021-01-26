@@ -1,4 +1,4 @@
-package machine;
+package com.academy.machine;
 
 import java.util.Scanner;
 
@@ -44,7 +44,7 @@ public class CoffeeMachine {
 
     public static void remaining() {
         System.out.println();
-        System.out.println("The coffee machine has:");
+        System.out.println("The coffee academy.machine has:");
         System.out.println(defWater + " of water");
         System.out.println(defMilk + " of milk");
         System.out.println(defCoffee + " of coffee beans");

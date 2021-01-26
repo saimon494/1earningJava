@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 import java.util.*;
 
 public class Sequence {
@@ -14,7 +16,7 @@ public class Sequence {
 
             a = n;
             n = scanner.nextInt();
-            if ((a>n) && (b==true) && (n != 0)){
+            if ((a>n) && (b) && (n != 0)){
                 b = false;
                 g = false;
             }
@@ -28,12 +30,12 @@ public class Sequence {
                 break;
             }
 
-            if ((n >= a) && (g != false))  {
+            if ((n >= a) && (g))  {
                 b = true;
                 c = true;
 
             }
-            else if ((n < a) && (c==true)) {
+            else if ((n < a) && (c)) {
                 b = false;
 
             } else if (n < a)  {

@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 public class NumberInWord {
 
     public static void printNumberInWord (int number) {

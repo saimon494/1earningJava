@@ -1,3 +1,5 @@
+package com.udemy.tim;
+
 public class Bedroom {
     private String name;
     private Wall wall1;
