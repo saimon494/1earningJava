@@ -3,76 +3,54 @@ package ru.job4j.collection;
 // Даны две строки. Нужно проверить, что вторая строка получилась методом перестановок символов в первой строке.
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class FreezeStr {
 
-//    private static final Map<Integer, String> stringMap = new HashMap<>();
+    private static Map<Integer, String> listToMap(List<String> list) {
+        Map<Integer, String> stringMap = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            stringMap.put(i, list.get(i));
+        }
+        return stringMap;
+    }
 
-//    private static Map<Integer, String> strToMap(String s) {
-//        Map<Integer, String> stringMap = new HashMap<>();
-//        String[] elements = s.split("");
-//        for (int i = 0; i < elements.length; i++) {
-//            stringMap.put(i, elements[i]);
-//        }
-//        return stringMap;
-//    }
+    public static Map<String, Integer> eqCountValue(String s) {
+        String[] list = s.split("");
+        Map<String, Integer> frequencyMap = new HashMap<>();
+        for (String el : list) {
+            Integer count = frequencyMap.get(el);
+            if (count == null) {
+                count = 0;
+            }
+            frequencyMap.put(el, count + 1);
+        }
+        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println();
+        return frequencyMap;
+    }
 
     public static boolean eq(String left, String right) {
+        List<String> leftList = Arrays.asList(left.split(""));
+        List<String> rightList = Arrays.asList(right.split(""));
+        Collections.sort(leftList);
+        Collections.sort(rightList);
+        Map<Integer, String> leftMap = new HashMap<>(listToMap(leftList));
+        Map<Integer, String> rightMap = new HashMap<>(listToMap(rightList));
+        return leftMap.equals(rightMap);
+    }
 
-//        List<String> setLeft = new ArrayList<>(strToMap(left).values());
-//        List<String> setRight = new ArrayList<>(strToMap(right).values());
-//        Map<String, Long> frequencyMap =
-//                setLeft.stream().collect(Collectors.groupingBy(Function.identity(),
-//                        Collectors.counting()));
-//
-//        for (Map.Entry<String, Long> entry : frequencyMap.entrySet()) {
-//            System.out.println(entry.getKey() + ": " + entry.getValue());
-//        }
-//        return setLeft.containsAll(setRight);
-
-//        List<String> listLeft = Arrays.asList(left.split(""));
-//        List<String> listRight = Arrays.asList(right.split(""));
-//        System.out.println(listLeft);
-//        System.out.println(listRight);
-//        System.out.println(strToMap(left));
-//        int setLength = Math.max(listLeft.size(), listRight.size());
-//        for (int i = 0; i < setLength; i++) {
-//            if (right.contains(listLeft.get(i))) {
-//                String newEl = stringMap.putIfAbsent(i, listRight.get(i));
-//                System.out.println(newEl);
-//            }
-//        }
-//        System.out.println(stringMap.toString());
-//        boolean rsl = true;
-//        Map<Integer, String> leftMap = new HashMap<>(strToMap(left));
-//        Map<Integer, String> rightMap = new HashMap<>(strToMap(right));
-//        boolean rsl = false;
-        List<String> listLeft = Arrays.asList(left.split(""));
-        List<String> listRight = Arrays.asList(right.split(""));
-        Map<String, Long> frequencyLeftMap =
-                listLeft.stream().collect(Collectors.groupingBy(Function.identity(),
-                        Collectors.counting()));
-
-        for (Map.Entry<String, Long> entry : frequencyLeftMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        Map<String, Long> frequencyRightMap =
-                listRight.stream().collect(Collectors.groupingBy(Function.identity(),
-                        Collectors.counting()));
-
-        for (Map.Entry<String, Long> entry : frequencyRightMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        return frequencyRightMap.equals(frequencyLeftMap);
+    public static boolean eq2(String left, String right) {
+        Map<String, Integer> leftMap = eqCountValue(left);
+        Map<String, Integer> rightMap = eqCountValue(right);
+        return leftMap.equals(rightMap);
     }
 
     public static void main(String[] args) {
-        String left = "heloo";
-        String right = "hello";
-//        System.out.println(strToMap(left));
-//        System.out.println(strToMap(right));
+        String left = "Hello";
+        String right = "Hlloe";
         System.out.println(eq(left, right));
+        System.out.println(eq2(left, right));
     }
 }
